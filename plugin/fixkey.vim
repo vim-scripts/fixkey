@@ -18,7 +18,7 @@ set cpoptions&vim
 
 " Ensure keycode timeouts are enabled.
 if &ttimeoutlen < 0
-    set ttimeoutlen=50
+    set ttimeoutlen=5
 endif
 
 function! Fixkey_setKey(key, keyCode)
@@ -583,7 +583,7 @@ elseif $TERM =~# '^putty\(-\d*color\)\?$'
 elseif $TERM =~# '^rxvt\(-unicode\)\?\(-\d*color\)\?$'
     call Fixkey_setRxvtKeys()
 
-elseif $TERM =~# '^screen\(-\d*color\)\?\(-bce\)\?\(-s\)\?$'
+elseif $TERM =~# '\v^screen(-\d*color|-bce|-it|-s)*$'
     call Fixkey_setScreenKeys()
 
 else
